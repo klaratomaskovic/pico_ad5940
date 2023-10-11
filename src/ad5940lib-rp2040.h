@@ -6,7 +6,7 @@
 #endif
 
 //Use dafault hardware definitions if no custom definitions are found
-#if !defined(AD5940_SPI_INSTANCE) || !defined(AD5940_SPI_SCK_PIN) || !defined(PAD5940_SPI_MOSI_PIN) || !defined(AD5940_SPI_MISO_PIN) || !defined(AD5940_SPI_CS_PIN) || !defined(AD5940_RST_PIN) || !defined(AD5940_INT_PIN)
+#if !defined(AD5940_SPI_INSTANCE) || !defined(AD5940_SPI_SCK_PIN) || !defined(AD5940_SPI_MOSI_PIN) || !defined(AD5940_SPI_MISO_PIN) || !defined(AD5940_SPI_CS_PIN) || !defined(AD5940_RST_PIN) || !defined(AD5940_INT_PIN)
     #warning Not all required pins are defined. Using pico defaults for missing definitions.
     #ifndef AD5940_SPI_INSTANCE
         #define AD5940_SPI_INSTANCE PICO_DEFAULT_SPI_INSTANCE
@@ -36,4 +36,4 @@
         #define AD5940_SPI_SPEED (10 * 1000 * 1000) //10MBd Should do it
 #endif
 
-void IntCallback(uint16_t gpio, uint32_t event_mask);
+void IntCallback(unsigned int gpio, unsigned long event_mask);
