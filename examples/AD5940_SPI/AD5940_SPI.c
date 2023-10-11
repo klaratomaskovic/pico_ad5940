@@ -56,6 +56,7 @@ void AD5940_Main(void)
    * */
   srand(0x1234);
   i =10000;
+  //i = 0;
   while(i--)
   {
     static unsigned long count;

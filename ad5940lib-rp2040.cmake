@@ -19,4 +19,5 @@ target_link_libraries(ad5940lib-rp2040 INTERFACE
     hardware_spi
 )
 
+
 add_compile_definitions(CHIPSEL_594X)
