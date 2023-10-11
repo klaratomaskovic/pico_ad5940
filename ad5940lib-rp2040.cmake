@@ -16,7 +16,6 @@ target_sources(ad5940lib-rp2040 INTERFACE
 
 if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/../../src/pinout.h)
     target_include_directories(ad5940lib-rp2040 INTERFACE ${CMAKE_CURRENT_LIST_DIR}/../../src)
-    #target_sources(ad5940lib-rp2040 INTERFACE ${CMAKE_CURRENT_LIST_DIR}../../src/pinout.h)
 endif()
 
 
