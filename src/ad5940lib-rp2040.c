@@ -4,7 +4,7 @@
 
 bool IntFlag = 0;
 
-void IntCallback(uint16_t gpio, uint32_t event_mask){
+void IntCallback(unsigned int gpio, unsigned long event_mask){
     IntFlag = 1;
 }
 
