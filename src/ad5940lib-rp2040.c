@@ -4,16 +4,21 @@
 
 bool IntFlag = 0;
 
+void (*intCallback)(void) = NULL;
+
 void IntCallback(unsigned int gpio, unsigned long event_mask){
     IntFlag = 1;
+    if (intCallback != NULL){
+        intCallback();
+    }
 }
 
-void AD5940_ReadWriteNBytes(unsigned char *pSendBuffer,unsigned char *pRecvBuff,unsigned long length)
+inline void AD5940_ReadWriteNBytes(unsigned char *pSendBuffer,unsigned char *pRecvBuff,unsigned long length)
 {
   spi_write_read_blocking(AD5940_SPI_INSTANCE, pSendBuffer, pRecvBuff, length);
 }
 
-void AD5940_CsClr(void)
+inline void AD5940_CsClr(void)
 {
     sleep_us(1); //This is dependant on SPI Clock Speed!
     gpio_put(AD5940_SPI_CS_PIN, 0);
@@ -21,41 +26,44 @@ void AD5940_CsClr(void)
 
 }
 
-void AD5940_CsSet(void)
+inline void AD5940_CsSet(void)
 {   
     gpio_put(AD5940_SPI_CS_PIN, 1);
     
 }
 
-void AD5940_RstSet(void)
+inline void AD5940_RstSet(void)
 {
     gpio_put(AD5940_RST_PIN, 1);
 }
 
-void AD5940_RstClr(void)
+inline void AD5940_RstClr(void)
 {
     gpio_put(AD5940_RST_PIN, 0);
 }
 
-void AD5940_Delay10us(uint32_t time)
+inline void AD5940_Delay10us(uint32_t time)
 {
   sleep_us(10*time);
 }
 
-uint32_t AD5940_GetMCUIntFlag(void)
+inline uint32_t AD5940_GetMCUIntFlag(void)
 {
     return IntFlag;
 }
 
-uint32_t AD5940_ClrMCUIntFlag(void)
+inline uint32_t AD5940_ClrMCUIntFlag(void)
 {
     IntFlag = 0;
 }
 
-/* Functions that used to initialize MCU platform */
 
-uint32_t AD5940_MCUResourceInit(void *pCfg)
+//Initalize the RP2040 for connection to the AD5940
+uint32_t AD5940_MCUResourceInit(void *pCfg, void* userCallback)
 {
+
+    intCallback = userCallback;
+
     spi_init(AD5940_SPI_INSTANCE, AD5940_SPI_SPEED);
     spi_set_format(AD5940_SPI_INSTANCE, 8, 0, 0, SPI_MSB_FIRST);
     gpio_set_function(AD5940_SPI_SCK_PIN, GPIO_FUNC_SPI);
