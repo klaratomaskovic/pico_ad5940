@@ -39,23 +39,7 @@
     #define AD5940_SPI_SPEED (10 * 1000 * 1000) //10MBd Should do it
 #endif
 
-inline void AD5940_ReadWriteNBytes(unsigned char *pSendBuffer,unsigned char *pRecvBuff,unsigned long length);
-
-inline void AD5940_CsClr(void);
-
-inline void AD5940_CsSet(void);
-
-inline void AD5940_RstSet(void);
-
-inline void AD5940_RstClr(void);
-
-inline void AD5940_Delay10us(uint32_t time);
-
-inline uint32_t AD5940_GetMCUIntFlag(void);
-
-inline uint32_t AD5940_ClrMCUIntFlag(void);
-
-uint32_t AD5940_MCUResourceInit(void *pCfg, void* userCallback);
+void AD5940_SetUserCallback(void* userCallback);
 
 
 

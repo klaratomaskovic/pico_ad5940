@@ -59,10 +59,8 @@ inline uint32_t AD5940_ClrMCUIntFlag(void)
 
 
 //Initalize the RP2040 for connection to the AD5940
-uint32_t AD5940_MCUResourceInit(void *pCfg, void* userCallback)
+uint32_t AD5940_MCUResourceInit(void *pCfg)
 {
-
-    intCallback = userCallback;
 
     spi_init(AD5940_SPI_INSTANCE, AD5940_SPI_SPEED);
     spi_set_format(AD5940_SPI_INSTANCE, 8, 0, 0, SPI_MSB_FIRST);
@@ -85,5 +83,12 @@ uint32_t AD5940_MCUResourceInit(void *pCfg, void* userCallback)
     AD5940_RstSet();
     return 0;
 }
+
+void AD5940_SetUserCallback(void* userCallback)
+{
+    intCallback = userCallback;
+
+}
+
 
 
