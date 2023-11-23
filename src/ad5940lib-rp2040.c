@@ -4,12 +4,12 @@
 
 bool IntFlag = 0;
 
-void (*intCallback)(void) = NULL;
+void (*userCallback)(void) = NULL;
 
 void IntCallback(unsigned int gpio, unsigned long event_mask){
     IntFlag = 1;
-    if (intCallback != NULL){
-        intCallback();
+    if (userCallback != NULL){
+        userCallback();
     }
 }
 
@@ -84,10 +84,9 @@ uint32_t AD5940_MCUResourceInit(void *pCfg)
     return 0;
 }
 
-void AD5940_SetUserCallback(void* userCallback)
+void AD5940_SetUserCallback(void* callback)
 {
-    intCallback = userCallback;
-
+    userCallback = callback;
 }
 
 
