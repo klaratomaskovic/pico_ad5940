@@ -44,9 +44,9 @@ AppIMPCfg_Type AppIMPCfg =
   .RcalVal = 10000.0,
 
   .DswitchSel = SWD_CE0,
-  .PswitchSel = SWP_CE0,
-  .NswitchSel = SWN_AIN1,
-  .TswitchSel = SWT_AIN1,
+  .PswitchSel = SWP_RE0,
+  .NswitchSel = SWN_SE0,
+  .TswitchSel = SWT_SE0LOAD,
 
   .PwrMod = AFEPWR_HP,
 
@@ -54,7 +54,7 @@ AppIMPCfg_Type AppIMPCfg =
   .ExcitBufGain = EXCITBUFGAIN_0P25,
   .HsDacGain = HSDACGAIN_1,
   .HsDacUpdateRate = 7,
-  .DacVoltPP = 800.0,
+  .DacVoltPP = 30.0,
   .BiasVolt = -0.0f,
 
 

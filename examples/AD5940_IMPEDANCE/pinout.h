@@ -1,7 +1,7 @@
-#define AD5940_SPI_INSTANCE spi1
-#define AD5940_SPI_SCK_PIN 26
-#define AD5940_SPI_MOSI_PIN 27
-#define AD5940_SPI_MISO_PIN 28
-#define AD5940_SPI_CS_PIN 29
-#define AD5940_RST_PIN 22
-#define AD5940_INT_PIN 17
+#define AD5940_SPI_INSTANCE spi0 
+#define AD5940_SPI_SCK_PIN 18 //P3 Pin 6 Arduino D13
+#define AD5940_SPI_MOSI_PIN 19 //P3 Pin 4 Arduino D11
+#define AD5940_SPI_MISO_PIN 16 //P3 Pin 5 Arduino D12
+#define AD5940_SPI_CS_PIN 17 //P3 Pin 3 Arduino D10
+#define AD5940_RST_PIN 20 //P1 Pin 4 
+#define AD5940_INT_PIN 21

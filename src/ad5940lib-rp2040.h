@@ -4,8 +4,8 @@
 #include "ad5940.h"
 
 //Create a pinout.h File for your custom design
-#if __has_include("pinout.h")
-    #include "pinout.h"
+#if __has_include("pinout.h") && !defined(LOCAL_PIN_CONFIG) && 0
+        #include "pinout.h"
 #endif
 
 //Use dafault hardware definitions if no custom definitions are found
